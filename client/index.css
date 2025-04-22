@@ -1,9 +1,30 @@
+:root {
+  --font-size-base: 62.5%;
+  --font-family-base: "Open Sans", sans-serif;
+
+  /* Colors */
+  --color-bg: #100e17;
+  --color-bg-secondary: #262135;
+  --color-text: #e0aaff;
+  --color-primary: #bb86fc;
+  --color-secondary: #3700b3;
+  --color-accent: #bb86fc;
+  --color-border: #3a3a3a;}
+
 html {
-  font-size: 62.5%;
-  font-family: "Open Sans", sans-serif;
+  font-size: var(--font-size-base);
+  font-family: var(--font-family-base);
+  background-color: var(--color-bg);
+  color: var(--color-text);
 }
 
 * {
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: var(--color-bg);
+  color: var(--color-text);
 }

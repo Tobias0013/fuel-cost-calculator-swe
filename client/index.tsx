@@ -9,11 +9,8 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import { BrowserRouter, Link, Route, Routes } from "react-router-dom";
-
-import Clock from "./component/clock";
-import Form from "./component/form";
-import ColorPicker from "./component/colorPicker";
 import "./index.css";
+import Main from "./page/main/main";
 
 const rootElem = document.getElementById("root");
 
@@ -30,8 +27,7 @@ root.render(
 
   <BrowserRouter>
     <Routes>
-      <Route path="/" element={<><Form /> <ColorPicker /> <Link to={"/clock"}><button>Clock</button></Link></>} />
-      <Route path="/clock" element={<><Clock /> <h1>{process.env.PORT}</h1></>} />
+      <Route path="*" element={<Main/>} />
     </Routes>
   </BrowserRouter>
   </>

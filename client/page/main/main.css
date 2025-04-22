@@ -1,0 +1,78 @@
+.container {
+  background: var(--color-bg);
+  color: var(--color-text);
+  padding: 6rem; /* Increased padding */
+  font-family: sans-serif;
+  font-size: 2rem; /* Increased font size */
+}
+
+h1 {
+  color: var(--color-primary);
+  text-align: center;
+  font-size: 4rem; /* Increased font size */
+}
+
+.comparison-sections {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 3rem; /* Increased gap */
+  margin-top: 3rem;
+}
+
+.section {
+  background: var(--color-bg-secondary);
+  padding: 3rem; /* Increased padding */
+  border-radius: 1.5rem; /* Increased border radius */
+  flex: 1 1 45%;
+  min-width: 400px; /* Increased minimum width */
+}
+
+label {
+  display: block;
+  margin: 1.5rem 0; /* Increased margin */
+  font-size: 2rem; /* Increased font size */
+}
+
+input {
+  width: 100%;
+  padding: 1.5rem; /* Increased padding */
+  border: 1px solid var(--color-bg);
+  border-radius: 1rem; /* Increased border radius */
+  background: var(--color-bg);
+  color: var(--color-text);
+  font-size: 2rem; /* Increased font size */
+}
+
+input[type="number"]:active, input[type="number"]:focus-visible {
+  border: 1px solid var(--color-accent); /* Highlight border on click or focus */
+  outline: none; /* Remove default outline */
+}
+
+button {
+  background: var(--color-accent);
+  color: var(--color-bg);
+  padding: 2rem 4rem; /* Increased padding */
+  border: none;
+  border-radius: 1.5rem; /* Increased border radius */
+  margin-top: 3rem; /* Increased margin */
+  font-size: 2rem; /* Increased font size */
+  cursor: pointer;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.result {
+  margin-top: 3rem; /* Increased margin */
+  text-align: center;
+  color: var(--color-accent);
+  font-size: 3rem; /* Increased font size */
+}
+
+@media (max-width: 768px) {
+  .comparison-sections {
+    flex-direction: column;
+  }
+}
