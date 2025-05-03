@@ -5,6 +5,7 @@ import "./main.css";
 export default function CarTaxComparison() {
   const [miles, setMiles] = useState(0);
   const [years, setYears] = useState(0);
+  const [parkingFee, setParkingFee] = useState(7000);
   const [fuelPriceE, setFuelPriceE] = useState(2);
   const [fuelPriceG, setFuelPriceG] = useState(8);
 
@@ -28,9 +29,11 @@ export default function CarTaxComparison() {
 
     // calculate the reduction in tax for electric and gas cars
     const electricReduction = parseFloat(
-      ((miles * 9.5 - 11000) * 0.33).toFixed(2)
+      ((miles * 25 - 11000 + parkingFee) * 0.33 * years).toFixed(2)
     );
-    const gasReduction = parseFloat(((miles * 25 - 11000) * 0.33).toFixed(2));
+    const gasReduction = parseFloat(
+      ((miles * 25 - 11000 + parkingFee) * 0.33 * years).toFixed(2)
+    );
 
     // calculate the total cost for electric and gas cars
     const electricCost = miles * fuelPriceE * years;
@@ -44,7 +47,9 @@ export default function CarTaxComparison() {
     setResultText(
       `
       The best option is: ${totalCostE < totalCostG ? "Electric" : "Gas"} car
-      Difference: ${parseFloat(Math.abs(totalCostE - totalCostG).toFixed(2)).toLocaleString()} kr
+      Difference: ${parseFloat(
+        Math.abs(totalCostE - totalCostG).toFixed(2)
+      ).toLocaleString()} kr
       `
     );
     setResultTextE(
@@ -106,6 +111,14 @@ export default function CarTaxComparison() {
           Years driven:
           <input type="number" onChange={(e) => setYears(+e.target.value)} />
         </label>
+        <label>
+          Parking fee (kr):
+          <input
+            type="number"
+            value={parkingFee}
+            onChange={(e) => setParkingFee(+e.target.value)}
+          />
+        </label>
       </div>
       <button onClick={handleCalculate}>Calculate</button>
 
@@ -118,18 +131,18 @@ export default function CarTaxComparison() {
         </div>
       )}
       <div className="comparison-sections">
-        {resultTextE && (
-          <div className="section">
-            <h2>Electric Car Results</h2>
-            {resultTextE.split("\n").map((line, index) => (
-              <div key={index}>{line}</div>
-            ))}
-          </div>
-        )}
         {resultTextG && (
           <div className="section">
             <h2>Gas Car Results</h2>
             {resultTextG.split("\n").map((line, index) => (
+              <div key={index}>{line}</div>
+            ))}
+          </div>
+        )}
+        {resultTextE && (
+          <div className="section">
+            <h2>Electric Car Results</h2>
+            {resultTextE.split("\n").map((line, index) => (
               <div key={index}>{line}</div>
             ))}
           </div>
